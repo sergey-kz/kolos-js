@@ -1,0 +1,146 @@
+<div>
+    <style>
+        .code-example {
+            border: 1px solid #eaeaea;
+            background: #f5f5f5;
+        }
+    </style>
+
+
+    <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+        <tr>
+            <td class="vt" style="width: 300px; margin-right: 10px;">
+                <div id="group-menu" style="width: 300px; "></div>
+            </td>
+            <td class="vt">
+
+
+                    <div id="group-items">
+
+
+                        <div class="group-item" data-title="Кнопки">
+                            <a component="kolos.component.Button" href="javascript: alert('Message');">Текст</a>
+                            <a component="kolos.component.Button" href="javascript: alert('Message');" class="active">Текст</a>
+                            <a component="kolos.component.Button" href="javascript: alert('Message');" class="good">Текст</a>
+                            <a component="kolos.component.Button" href="javascript: alert('Message');" class="warning">Текст</a>
+
+                            <div class="mb-norm"></div>
+
+                            <a component="kolos.component.Button" href="javascript: alert('Message');">Текст</a>
+                            <span component="kolos.component.Button" onclick="alert('Message');">Текст</span>
+                            <a component="kolos.component.Button" href="javascript: alert('Message');" param="type: active;">Текст</a>
+                        </div>
+
+
+                        <div class="group-item" data-title="Вкладки">
+
+                            <div component="kolos.component.Tabs">
+
+                                <div caption="Вкладка_1" class="m-norm">
+                                    Содержание вкладки 1
+                                </div>
+
+                                <div caption="Вкладка_2" class="m-norm">
+                                    Текст вкладки 2
+                                </div>
+
+                                <div caption="Вкладка_3" class="m-norm">
+                                    Вкладка 3
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="group-item" data-title="Форма">
+
+                            <div component="kolos.component.Form" title="Заголовок">
+                                Содержание формы
+                            </div>
+
+                        </div>
+
+
+                        <div class="group-item" data-title="Подсказки">
+
+                            <div component="kolos.component.Hint" name="hint"></div>
+
+                        </div>
+
+                        <div class="group-item" data-title="Меню. Левое">
+
+                            <div component="kolos.component.MenuLeft" class="mr-norm">
+                                <a href="#/example/main">Главная</a>
+                                <a href="#/example/main/builder">Конструктор интерфейса</a>
+                                <a href="#/example/main/components">Компоненты</a>
+                                <a href="#/example/main/css">CSS</a>
+                            </div>
+
+                        </div>
+
+
+                    </div> <!-- group-items -->
+
+            </td>
+        </tr>
+    </table>
+
+    <script>
+
+
+        var InterfaceControls = {
+            _elements: [],
+            init: function () {
+                var Self = this;
+                // получаем все элементы на странице
+                $('#group-items .group-item').each(function (index) {
+                    Self._elements.push(this);
+                });
+
+                $('#group-menu').append('<a class="link dbi" href="javascript: void(InterfaceControls.showAll())">Показать все</a>');
+
+                for (var i in Self._elements) {
+                    var elem = Self._elements[i];
+                    var title = $(elem).data('title');
+                    var code = $(elem).html();
+                    $(elem).addClass('mt-norm');
+                    $(elem).addClass('mb-norm');
+                    $(elem).prepend('<div class="title-norm mt-norm">' + title + '</div>');
+                    $(elem).append('<div class="mt-norm text-small"><xmp class="code-example">' + code + '</xmp></div>');
+                    $(elem).append('<div class="hr mt-norm"></div>');
+
+                    // добавляем в меню
+                    $('#group-menu').append('<a class="link dbi" href="javascript: void(InterfaceControls.show(' + i + '))">' + title + '</a>');
+                }
+
+
+            },
+
+            copy: function (text) {
+                text = '<i class="icon-m">' + text + '</i>';
+                $('#icon-copy').val(text);
+                $('#icon-copy').select();
+                document.execCommand("copy");
+                alert('Скоприровано: ' + text);
+            },
+
+            show: function (index) {
+                $('#group-items .group-item').hide();
+                $(this._elements[index]).show();
+            },
+
+            showAll: function (index) {
+                $('#group-items .group-item').show();
+            }
+
+        };
+
+        $(document).ready(function () {
+            InterfaceControls.init();
+        });
+
+
+    </script>
+
+</div>

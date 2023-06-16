@@ -1,0 +1,42 @@
+.hint {
+    display: block;
+    padding: 10px;
+    border-top: 1px solid #c5b72d;
+    background: #f1ecbb;
+}
+.hint.info {
+    border-color: #2185d0;
+    background: #bde5fd;
+}
+.hint.error {
+    border-color: #de0a00;
+    background: #ffa9a7;
+}
+.hint.warning {
+    border-color: #c5b72d;
+    background: #f1ecbb;
+}
+.hint.success {
+    border-color: #3b9d39;
+    background: #adf196;
+}
+.hint.blue {
+    border-color: blue;
+    background: #aabdff;
+}
+.hint.red {
+    border-color: #de0a00;
+    background: #ffa9a7;
+}
+.hint.gray {
+    border-color: #645f5f;
+    background: #e4e4e4;
+}
+.hint.yellow {
+    border-color: #c5b72d;
+    background: #f1ecbb;
+}
+.hint.green {
+    border-color: #3b9d39;
+    background: #adf196;
+}

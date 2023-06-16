@@ -1,0 +1,13 @@
+/*подписи*/
+.caption-big {
+    font-size: var(--caption-size-big);
+    color: var(--caption-color);
+}
+.caption-norm {
+    font-size: var(--caption-size-norm);
+    color: var(--caption-color);
+}
+.caption-small {
+    font-size: var(--caption-size-small);
+    color: var(--caption-color);
+}

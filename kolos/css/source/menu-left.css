@@ -1,0 +1,16 @@
+.menu-left {
+    width: 300px;
+    padding: 2px;
+}
+.menu-left a {
+    display: block;
+    border-bottom: 1px solid #b1b1bb;
+    color: #4b4b4b;
+    line-height: 34px;
+}
+.menu-left a:hover {
+    color: black;
+}
+.menu-left a.sel {
+    padding-left: 10px;
+}

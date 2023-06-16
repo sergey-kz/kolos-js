@@ -1,0 +1,63 @@
+/*класс дива со вложенной формой*/
+.form {
+    width: 500px;
+    /* border: 1px solid #393939; */
+    /* border: 1px solid #30a4fb; */
+    /*background: #f2f9ff;*/
+    background: white;
+    /* border: 1px solid red; */
+    /* margin: 2px; */
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(200,200,200,1);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(200,200,200,1);
+    box-shadow: 3px 3px 5px 0px rgba(200,200,200,1);
+}
+
+.form .form-header {
+    text-align: left;
+    /* padding: 7px 5px 7px 5px; */
+    padding: 10px 7px 10px 7px;
+    /* font-weight: bold; */
+    /* color: white; */
+    color: white;
+    background: #2185d0;
+    /* border: 1px solid #00adee; */
+}
+
+/*.form .form-header::after {*/
+/*    content: "";*/
+/*    border-top: 1px solid #7b7b7b;*/
+/*    display: block;*/
+/*    width: 20%;*/
+/*    left: -10px;*/
+/*    top: 7px;*/
+/*    position: relative;*/
+/*}*/
+
+.form .form-content {
+    /* padding: 10px 10px 10px 10px; */
+    /*padding: 5px;*/
+    /* border: 1px solid #00adee; */
+    /* margin: 2px;ddwqws */
+    /*border: 1px solid #a4ccea;*/
+    border: 1px solid #dfdfdf;
+}
+
+/*.form::after {*/
+/*    content: "";*/
+/*    background: #f7f7f7;*/
+/*    background: -moz-linear-gradient(top, #f7f7f7 0%, #f7f7f7 26%, #d4dddd 100%); !* FF3.6-15 *!*/
+/*    background: -webkit-linear-gradient(top, #f7f7f7 0%,#f7f7f7 26%,#d4dddd 100%); !* Chrome10-25,Safari5.1-6 *!*/
+/*    background: linear-gradient(to bottom, #f7f7f7 0%,#f7f7f7 26%,#d4dddd 100%); !* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ *!*/
+/*    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#d4dddd',GradientType=0 ); !* IE6-9 *!*/
+
+/*    display: block;*/
+/*    height: 40px;*/
+/*    margin-top: -40px;*/
+/*    width: 100%;*/
+/*}*/
+
+.form form {
+    /* Debug >>> */
+    /*border: 1px solid aqua;*/
+    /*margin: 2px;*/
+}

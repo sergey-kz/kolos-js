@@ -1,0 +1,24 @@
+.bg-info {
+    background: var(--bg-info);
+}
+.bg-error {
+    background: var(--bg-error);
+}
+.bg-warning {
+    background: var(--bg-warning);
+}
+.bg-success {
+    background: var(--bg-success);
+}
+.bg-disabled {
+    background: var(--bg-disabled);
+}
+.bg-base {
+    background: var(--bg-base);
+}
+
+.bg-white { background: white; }
+.bg-black { background: black; }
+.bg-blue { background: blue; }
+.bg-red { background: red; }
+.bg-green { background: green; }

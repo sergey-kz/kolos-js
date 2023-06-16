@@ -1,0 +1,33 @@
+.c-info {
+    color: var(--c-info);
+}
+.c-error {
+    color: var(--c-error);
+}
+.c-warning {
+    color: var(--c-warning);
+}
+.c-success {
+    color: var(--c-success);
+}
+.c-disabled {
+    color: var(--c-disabled);
+}
+.c-base {
+    color: var(--c-base);
+}
+
+.c-white { color: white; }
+.c-white-i { color: white !important; }
+.c-yellow { color: yellow; }
+.c-yellow2 { color: #c5c500; }
+.c-black { color: black; }
+.c-blue { color: #0065ff; }
+.c-red { color: red; }
+.c-green { color: #00b100; }
+.c-gray { color: gray; }
+.c-silver { color: silver; }
+
+.c-invert {
+    filter: invert(100%);
+}

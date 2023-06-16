@@ -1,0 +1,6 @@
+.hover {}
+.hover.active {}
+.hover.warning {}
+.hover:hover {background: #f1f1f1;}
+.hover.active:hover {background: #ecf8ff;}
+.hover.warning:hover {background: #ffeff2;}

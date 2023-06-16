@@ -1,0 +1,56 @@
+:root {
+    --mm-c-action: #242b7f;
+    --mm-c-action-hover: #000973;
+
+    --background: #fafafa;
+    --font-family: Tahoma, Geneva, sans-serif;
+    --font-size: 15px;
+    --font-weight: 300;
+
+    /* базовые цвета */
+    --c-base: #444;
+    --c-success: #3b9d39;
+    --c-info: #0065ff;
+    --c-error: #de0a00;
+    --c-warning: #c5b72d;
+    --c-disabled: #a0a0a0;
+    /* цвет элементов */
+    --link-color: #1e70bf;
+    --caption-color: #3e4269;
+
+    /* базовые фоны */
+    --bg-base: none;
+    --bg-success: #3b9d39;
+    --bg-info: #0065ff;
+    --bg-error: #de0a00;
+    --bg-warning: #c5b72d;
+    --bg-disabled: #a0a0a0;
+
+    /* разные параметры */
+    --m-small: 2px;
+    --m-norm: 5px;
+    --m-big: 20px;
+
+    --p-small: 2px;
+    --p-norm: 5px;
+    --p-big: 20px;
+
+    --radius-big: 6px;
+    --radius-norm: 3px;
+    --radius-small: 2px;
+
+    --caption-size-big: 17px;
+    --caption-size-norm: 15px;
+    --caption-size-small: 12px;
+
+    --shadow-big: 3px 3px 5px 0px rgba(200,200,200,1);
+    --shadow-norm: 1px 1px 3px 0px rgba(0,0,0,0.3);
+    --shadow-small: 1px 1px 1px 0px rgba(100,100,100,0.3);
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+
+    --menu-bg: var(--background);
+    --menu-c: var(--c-base);
+    --menu-bg-hover: #ddd;
+    --menu-c-hover: var(--c-base);
+
+}

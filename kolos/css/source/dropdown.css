@@ -1,0 +1,41 @@
+
+/* Кнопка выпадающего списка */
+.dropdown-button {
+    /*  */
+}
+
+/* Контейнер <div> - необходим для размещения выпадающего содержимого */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Выпадающее содержимое (скрыто по умолчанию) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--background);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Показать выпадающее меню при наведении курсора */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
+.dropdown:hover .dropdown-button {
+    /*  */
+}
+
+.dropdown .menu-item {
+    padding: var(--p-norm);
+    display: block;
+    color: var(--menu-c);
+    background-color: var(--menu-bg);
+}
+.dropdown .menu-item:hover {
+    color: var(--menu-c-hover);
+    background-color: var(--menu-bg-hover);
+}

@@ -1,0 +1,7 @@
+.hr {
+    border: none;
+    /*border-bottom: 1px solid #1f0f00;*/
+    border-bottom: 1px solid #b1b1bb;
+    height: 1px;
+    display: block;
+}

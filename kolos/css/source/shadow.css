@@ -1,0 +1,27 @@
+/* тень текста */
+.shadow-big {
+    -webkit-box-shadow: var(--shadow-big);
+    -moz-box-shadow: var(--shadow-big);
+    box-shadow: var(--shadow-big);
+}
+.shadow-norm {
+    -webkit-box-shadow: var(--shadow-norm);
+    -moz-box-shadow: var(--shadow-norm);
+    box-shadow: var(--shadow-norm);
+}
+.shadow-small {
+    -webkit-box-shadow: var(--shadow-small);
+    -moz-box-shadow: var(--shadow-small);
+    box-shadow: var(--shadow-small);
+}
+
+/* тень текста */
+.shadow-text-big {
+    text-shadow: 3px 3px 3px rgba(150, 150, 150, 1);
+}
+.shadow-text-norm {
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+}
+.shadow-text-small {
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 0.3);
+}

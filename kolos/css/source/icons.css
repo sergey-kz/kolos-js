@@ -1,0 +1,48 @@
+
+/* font icons */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    /*src: url(https://fonts.gstatic.com/s/materialicons/v92/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');*/
+    src: url('./fonts/GoogleMaterialIcons/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.icon-m {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    vertical-align: middle;
+    margin-top: -3px;
+    font-size: 20px;
+}
+
+.icon-m.s14 { font-size: 14px;}
+.icon-m.s16 { font-size: 16px;}
+.icon-m.s20 { font-size: 20px;}
+.icon-m.s22 { font-size: 22px;}
+.icon-m.s24 { font-size: 24px;}
+.icon-m.s32 { font-size: 32px;}
+
+.icon-m.inject {
+    margin-right: -27px;
+    position: relative;
+    z-index: 1;
+}
+.icon-m.inject + .input {
+    padding-left: 26px;
+}
+
+.icon-m.top {
+    vertical-align: top;
+    margin-top: 3px;
+}

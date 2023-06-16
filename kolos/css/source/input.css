@@ -1,0 +1,76 @@
+.input {
+    width: 200px;
+    margin: 0;
+    max-width: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    text-align: left;
+    padding: 3px;
+    background: #fff;
+    /*border: 1px solid #bbd6ec;*/
+    /*border: 1px solid #cce1f3;*/
+    border: 1px solid #d1d1d1;
+    color: rgba(0, 0, 0, .87);
+    border-radius: 2px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.input:focus {
+    border-color: #85b7d9;
+    background: #fff;
+    color: rgba(0, 0, 0, .8);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+select.input {
+    width: 230px;
+}
+
+/*.input:active {*/
+/*    border-color: rgba(0, 0, 0, .3);*/
+/*    background: #fafafa;*/
+/*    color: rgba(0, 0, 0, .87);*/
+/*    -webkit-box-shadow: none;*/
+/*    box-shadow: none*/
+/*}*/
+
+
+/*.input {
+    width: 200px;
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 3px;
+    border: 1px solid #b7b7b7;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    font: normal 16px/normal "Times New Roman", Times, serif;
+    color: rgba(0,0,0,1);
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: rgba(252,252,252,1);
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.05) inset;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.05) inset;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.66) ;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+
+    outline: none;
+}
+
+.input:focus {
+    border: 1px solid #9b9b9b;
+    -webkit-box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.2) ;
+    box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.2) ;
+}*/

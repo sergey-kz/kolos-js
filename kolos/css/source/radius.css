@@ -1,0 +1,24 @@
+.radius-big {
+    -webkit-border-radius: var(--radius-big);
+    -moz-border-radius: var(--radius-big);
+    border-radius: var(--radius-big);
+}
+.radius-norm {
+    -webkit-border-radius: var(--radius-norm);
+    -moz-border-radius: var(--radius-norm);
+    border-radius: var(--radius-norm);
+}
+.radius-small {
+    -webkit-border-radius: var(--radius-small);
+    -moz-border-radius: var(--radius-small);
+    border-radius: var(--radius-small);
+}
+
+.radius-bottom-none {
+    -webkit-border-bottom-left-radius: unset;
+    -webkit-border-bottom-right-radius: unset;
+    -moz-border-radius-bottomleft: unset;
+    -moz-border-radius-bottomright: unset;
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+}

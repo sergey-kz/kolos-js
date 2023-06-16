@@ -1,0 +1,9 @@
+# -- system -->
+
+/.settings/
+/.classpath
+/.project
+/.idea
+
+
+kolos-js.iml

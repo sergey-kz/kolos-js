@@ -1,0 +1,15 @@
+.title-big {
+    font-size: 20px;
+    /*margin-top: 15px;*/
+    margin-bottom: 15px;
+}
+.title-norm {
+    font-size: 17px;
+    /*margin-top: 10px;*/
+    margin-bottom: 10px;
+}
+.title-small {
+    font-size: 12px;
+    /*margin-top: 5px;*/
+    margin-bottom: 5px;
+}

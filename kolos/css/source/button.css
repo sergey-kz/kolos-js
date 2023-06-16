@@ -1,0 +1,75 @@
+.button {
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    background: #e0e1e2 none;
+    color: rgba(0,0,0,.6);
+    /*margin: 0 .25em 0 0;*/
+    padding: 0 10px;
+    line-height: 28px;
+    text-transform: none;
+    text-shadow: none;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2px;
+}
+.button:hover {
+    background: #cacbcd;
+    color: rgba(0,0,0,.8);
+}
+.button:focus {
+    background: #cacbcd;
+    color: rgba(0,0,0,.8);
+}
+.button:active {
+    background: #babbbc;
+    color: rgba(0,0,0,.8);
+}
+
+/* active */
+.button.active {
+    background: #2185d0;
+    color: #fff;
+}
+.button.active:hover {
+    background: #1678c2;
+}
+.button.active:focus {
+    background: #0d71bb;
+}
+.button.active:active {
+    background: #1a69a4;
+}
+
+/* warning */
+.button.warning {
+    background: #db2828;
+    color: #fff;
+}
+.button.warning:hover {
+    background: #d01919;
+}
+.button.warning:focus {
+    background: #ca1010;
+}
+.button.warning:active {
+    background: #b21e1e;
+}
+
+/* good */
+.button.good {
+    background: #21ba45;
+    color: #fff;
+}
+.button.good:hover {
+    background: #16ab39;
+}
+.button.good:focus {
+    background: #0ea432;
+}
+.button.good:active {
+    background: #198f35;
+}
