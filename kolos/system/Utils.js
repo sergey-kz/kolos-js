@@ -285,7 +285,6 @@ kolos.Utils = {
             windowJQ.scrollTop()) + "px");
         elementJQ.css("left", Math.max(0, ((windowJQ.width() - $(elementJQ).outerWidth()) / 2) +
             windowJQ.scrollLeft()) + "px");
-        return this;
     },
 
     toCenterTop: function(tagId, percent) {
@@ -299,7 +298,18 @@ kolos.Utils = {
             windowJQ.scrollTop()) + "px");
         elementJQ.css("left", Math.max(0, ((windowJQ.width() - $(elementJQ).outerWidth()) / 2) +
             windowJQ.scrollLeft()) + "px");
-        return this;
+    },
+
+    toCenterTopMargin: function(tagId, percent) {
+        if (percent === undefined) {
+            percent = 30;
+        }
+        var elementJQ = $(tagId);
+        var windowJQ = $(window);
+        elementJQ.css(
+            "margin-top",
+            Math.max(0, ((windowJQ.height() - $(elementJQ).outerHeight()) / (100 / percent)) + windowJQ.scrollTop()) + "px"
+        );
     },
 
     firstUp: function(str) {

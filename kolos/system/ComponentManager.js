@@ -22,6 +22,11 @@ kolos.ComponentContext = function() {
      */
     this.isInit = false;
     this.path = '';
+    /**
+     * Если компонент создан в модальной форме, ему передаётся её объект
+     * @type {kolos.Modal.Item}
+     */
+    this.modal = undefined;
 }
 
 kolos.ComponentManager = function (rootPath) {
@@ -62,10 +67,17 @@ kolos.ComponentManager = function (rootPath) {
     }
 
     this.destroyComponent = function (comp) {
+        // сначала удаляем вложенные компоненты
+        if (comp.component !== undefined) {
+            for (let i in comp.component) {
+                Self.destroyComponent(comp.component[i]);
+            }
+        }
+        // удаляем компонент из памяти
         this.freeComponent(comp);
         // remove dom element
-        if (comp.context !== undefined && comp.element !== undefined) {
-            $(comp.context.component).remove();
+        if (comp.context !== undefined && comp.context.element !== undefined) {
+            $(comp.context.element).remove();
         }
     }
 
@@ -76,7 +88,7 @@ kolos.ComponentManager = function (rootPath) {
                     try {
                         comp.onDestroy();
                     } catch (e) {
-                        console.error(e);
+                        kolos.Utils.error(e);
                     }
                 }
                 /** @var {kolos.ComponentContext} comp.context */
@@ -86,7 +98,7 @@ kolos.ComponentManager = function (rootPath) {
                 }
             }
         } catch (e) {
-            console.error(e);
+            kolos.Utils.error(e);
         }
     }
 
