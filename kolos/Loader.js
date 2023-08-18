@@ -3,12 +3,13 @@
  */
 
 
-if (kolos === undefined) var kolos = {};
+if (kolos === undefined) let kolos = {};
 
 //заглушка, чтобы не сломалось в других браузерах
 if (console === undefined) {
-    var console = {
-        log: function(text) {}
+    let console = {
+        log: function(text) {},
+        error: function (text) {}
     }
 }
 

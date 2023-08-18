@@ -16,12 +16,41 @@ kolos.example.Components = function() {
     this.param = {};
     //--
 
+    this.__initTableFlag = false;
+    this.__initTable = function () {
+        if (!this.__initTableFlag) {
+            this.__initTableFlag = true;
+
+            Self.component.table.setFields({
+                id: "ID",
+                name: "Name",
+                group: "GroUp"
+            });
+
+            Self.component.table.addAction("View row", function (row) {
+                alert(JSON.stringify(row));
+            });
+
+            Self.component.table.addAction("View name", function (row) {
+                alert(row["name"]);
+            });
+
+            Self.component.table.setData([
+                {id: 100, name: "Viktor", group: "007"},
+                {id: 101, name: "Alex", group: "007"},
+                {id: 102, name: "Viktor", group: "007"},
+            ]);
+        }
+    }
+
     this.onReady = function() {
         // грузим файл с примерами
         Self.loadFile('ComponentExample.html', (data) => {
+
             $(Self.context.element).html(data);
+
             kolos.app.componentManager.initComponentsFromTag(Self.context.element, Self, (cmp) => {
-                console.log(cmp);
+                Self.__initTable();
             });
         });
     }

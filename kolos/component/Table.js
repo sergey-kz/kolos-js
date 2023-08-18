@@ -80,8 +80,11 @@ kolos.component.Table = function () {
 
     this.__renderRow = function(row, index) {
         let content = '\t<tr>\n';
-        for (let fieldName in row) {
+        for (let fieldName in this.fields) {
             let value = row[fieldName];
+            if (value === undefined) {
+                value = '';
+            }
             content += this.__renderCell(fieldName, value, row, index);
         }
         for (let actionId in this.actions) {
@@ -94,7 +97,7 @@ kolos.component.Table = function () {
     }
 
     this.__renderCell = function(fieldName, value, row, index) {
-        return '\t\t<td>' + value + '</td>\n'
+        return '\t\t<td>' + value + '</td>\n';
     }
 
     this.__execAction = function(actionId, index) {

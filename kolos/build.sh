@@ -16,6 +16,7 @@ JS_DIR_BUILD=./..
 # каталог пользовательских компонентов
 JS_DIR_CUSTOM_ROOT=./..
 JS_DIR_CUSTOM_DIRS=( "custom" "page" )
+JS_DIR_APP="app"
 
 #-- Сборка css ---------------------->>
 
@@ -34,6 +35,16 @@ cp -R -f ./css/fonts "$CSS_DIR_BUILD/fonts"
 
 #-- Сборка js ---------------------->>
 
+# пример приложения
+
+if [ ! -f "$JS_DIR_CUSTOM_ROOT/$JS_DIR_APP/custom.js" ]
+then
+  mkdir -p "$JS_DIR_CUSTOM_ROOT/$JS_DIR_APP"
+  touch "$JS_DIR_CUSTOM_ROOT/$JS_DIR_APP/custom.js"
+  echo -e "kolos.app.custom = {\n}\n" >> "$JS_DIR_CUSTOM_ROOT/$JS_DIR_APP/custom.js"
+fi
+
+
 
 touch "$JS_DIR_BUILD/$JS_FILE_NAME"
 cat ./lib/jquery_and_json_1_9.js >> "$JS_DIR_BUILD/$JS_FILE_NAME"
@@ -43,6 +54,9 @@ find ./core -name "*.js" | sort | xargs cat >> "$JS_DIR_BUILD/$JS_FILE_NAME"
 find ./system -name "*.js" | sort | xargs cat >> "$JS_DIR_BUILD/$JS_FILE_NAME"
 cat ./Kolos.js >> "$JS_DIR_BUILD/$JS_FILE_NAME"
 cat ./app.js >> "$JS_DIR_BUILD/$JS_FILE_NAME"
+
+# добавляем пользовательское приложение
+cat "$JS_DIR_CUSTOM_ROOT/$JS_DIR_APP/custom.js" >> "$JS_DIR_BUILD/$JS_FILE_NAME"
 
 
 # добавляем пользовательские скрипты

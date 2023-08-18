@@ -2,13 +2,13 @@ kolos.component.ComponentTemplate = function() {
     // base properties -->>
     let Self = this;
     /** @type {kolos.ComponentContext} */
-    this.context = undefined;
+    this.context = {};
     this.element = {
-        link: undefined,
+        link: {},
     };
     this.component = {
         /** @type {kolos.component.Hint} */
-        hint: undefined,
+        hint: {},
     }
     this.param = {};
     this.attr = {};

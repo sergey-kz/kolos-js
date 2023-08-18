@@ -8,6 +8,7 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(6, 32, 52, 0.70);
+    z-index: 1000;
 }
 
 .modal-back .modal-content {

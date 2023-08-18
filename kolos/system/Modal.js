@@ -20,9 +20,9 @@ kolos.Modal = {
     /**
      * @return {kolos.Modal.Item}
      */
-    component: function(componentClass, parentComp, callback) {
+    component: function(componentClass, params, parentComp, callback) {
         let item = new kolos.Modal.Item();
-        item.component(componentClass, parentComp, callback);
+        item.component(componentClass, params, parentComp, callback);
         return item;
     },
 
@@ -56,6 +56,7 @@ kolos.Modal.Item = function () {
 
     this.__content = undefined;
     this.__onClickBack = undefined;
+    this.__onCloseBack = undefined;
     this.__component = undefined;
     // для захвата элемента
     this.__elementCapture = undefined;
@@ -78,8 +79,22 @@ kolos.Modal.Item = function () {
         Self.__isMouseDown = true;
     }
 
+    /**
+     * @param callback
+     * @return {kolos.Modal.Item}
+     */
     this.onClickBack = function (callback) {
         this.__onClickBack = callback;
+        return this;
+    }
+
+    /**
+     * @param callback
+     * @return {kolos.Modal.Item}
+     */
+    this.onClose = function (callback) {
+        this.__onCloseBack = callback;
+        return this;
     }
 
     this.setContent = function (content) {
@@ -87,8 +102,13 @@ kolos.Modal.Item = function () {
         $(this.__elementContent).html(this.__content);
     }
 
+    /**
+     * @param content
+     * @return {kolos.Modal.Item}
+     */
     this.content = function (content) {
         this.__content = content;
+        return this;
     }
 
     /**
@@ -96,20 +116,27 @@ kolos.Modal.Item = function () {
      */
     this.element = function(element) {
         this.__elementCapture = element;
-        this.__elementCaptureTmp = $('<span id="k-modalElCaptTmp' + this.globalId + '"></span>');
+        this.__elementCaptureTmp = $('<span id="k-modalElCaptTmp' + this.globalId + '"></span>')[0];
 
-
+        // заменяем временным элементом, чтобы можно было вернуть обратно
         $(this.__elementCapture).replaceWith(this.__elementCaptureTmp);
 
         this.setContent(this.__elementCapture);
+    }
 
+    this.__buildParamStr = function (params) {
+        let arr = [];
+        for (let key in params) {
+            arr.push(key + ': ' + params[key] + ';');
+        }
+        return arr.join(' ');
     }
 
     /**
      * @return {kolos.Modal.Item}
      */
-    this.component = function(componentClass, parent, callback) {
-        this.componentByDesc('<div component="' + componentClass + '"></div>', parent, callback);
+    this.component = function(componentClass, params, parent, callback) {
+        this.componentByDesc('<div component="' + componentClass + '" param="' + this.__buildParamStr(params) + '"></div>', parent, callback);
         return this;
     }
 
@@ -120,7 +147,7 @@ kolos.Modal.Item = function () {
 
         let memory = $(componentDesc);
 
-        this._content = '<div class="icon-load"></div>';
+        Self.setContent('<div class="icon-load"></div>');
 
         kolos.app.componentManager.initComponent(memory, parent, (cmp) => {
             Self.__component = cmp;
@@ -142,18 +169,30 @@ kolos.Modal.Item = function () {
     this.close = function () {
         $(this.__element).fadeOut(50);
 
-        // если был компонент, нужно грохнуть компонент
-        if (this.__component !== undefined) {
-            kolos.app.componentManager.destroyComponent(this.__component);
+        try {
+            // если был компонент, нужно грохнуть компонент
+            if (this.__component !== undefined) {
+                kolos.app.componentManager.destroyComponent(this.__component);
+            }
+        } catch (e) {
+            kolos.Utils.error(e);
         }
 
-        // если был dom элемент, то нужно вернуть его обратно
-        if (this.__elementCapture !== undefined) {
-            $(this.__elementCaptureTmp).replaceWith(this.__elementCapture);
+        try {
+            // если был dom элемент, то нужно вернуть его обратно
+            if (this.__elementCapture !== undefined) {
+                $(this.__elementCaptureTmp).replaceWith(this.__elementCapture);
+            }
+        } catch (e) {
+            kolos.Utils.error(e);
         }
 
         kolos.Global.remove(this.globalId);
         $(this.__element).remove();
+
+        if (this.__onCloseBack !== undefined) {
+            this.__onCloseBack();
+        }
     }
 
     this.show = function () {

@@ -6,7 +6,7 @@ kolos.Route = function () {
     this.args = [];
 }
 
-kolos.Router = function () {
+kolos.RouterCM = function () {
     let Self = this;
     /** @type {kolos.Route} */
     this.route = undefined;
@@ -51,14 +51,20 @@ kolos.Router = function () {
 
         // парсим действие -->>
 
-        let fullClassName = action.replaceAll('/', '.');
-        let lastPointPos = fullClassName.lastIndexOf('.');
+        let arr = action.split('/');
 
-        route.cmd = fullClassName.substring(0, lastPointPos);
-        route.component = fullClassName.substring(lastPointPos + 1);
+        route.cmd = kolos.Utils.val(arr, 0, '');
+        route.component = kolos.Utils.val(arr, 1, '');
+        route.method = kolos.Utils.val(arr, 2, '');
 
-        // route.method
-        // route.args
+        // забираем оставшиеся аргументы из пути /cmd/app/method/arg1/arg2/...
+        let args = [];
+        if (arr.length > 3) {
+            for (let i = 3; i < arr.length; i++) {
+                args.push(arr[i]);
+            }
+        }
+        route.args = args;
 
         // парсим параметры -->>
 

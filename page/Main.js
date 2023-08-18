@@ -5,11 +5,4 @@ kolos.page.Main = function() {
         //
     }
 
-    this.template = function() {
-        return `
-            <div class="center">
-                Main is empty
-            </div>
-            `;
-    }
 }

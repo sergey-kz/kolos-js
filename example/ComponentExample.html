@@ -79,6 +79,54 @@
 
                         </div>
 
+                        <div class="group-item" data-title="Таблица">
+
+                            <div component="kolos.component.Table" class="mr-norm"></div>
+
+                            <span style="display: none;">
+
+                                Self.component.table.setFields({
+                                    id: "ID",
+                                    name: "Name",
+                                    group: "GroUp"
+                                });
+
+                                Self.component.table.addAction("View row", function (row) {
+                                    alert(JSON.stringify(row));
+                                });
+
+                                Self.component.table.addAction("View name", function (row) {
+                                    alert(row["name"]);
+                                });
+
+                                Self.component.table.setData([
+                                    {id: 100, name: "Viktor", group: "007"},
+                                    {id: 101, name: "Alex", group: "007"},
+                                    {id: 102, name: "Viktor", group: "007"},
+                                ]);
+
+                            </span>
+
+                        </div>
+
+                        <div class="group-item" data-title="Дерево">
+
+                            <div component="kolos.component.Tree" class="mr-norm"></div>
+
+                            <span style="display: none;">
+
+                                Self.component.tree.setData([
+                                    {id: 1, pid: 0, name: 'Товары'},
+                                    {id: 2, pid: 1, name: 'Бытовая техника'},
+                                    {id: 3, pid: 1, name: 'Мебель'},
+                                    {id: 4, pid: 3, name: 'Стул кухонный'},
+                                    {id: 5, pid: 3, name: 'Стол кухонный'},
+                                ]);
+
+                            </span>
+
+                        </div>
+
 
                     </div> <!-- group-items -->
 

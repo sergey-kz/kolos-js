@@ -54,8 +54,8 @@ a {
 .vt {vertical-align: top;}
 .vm {vertical-align: middle;}
 .vb {vertical-align: bottom;}
-.nwr {white-space: nowrap;}
-.nowrap {white-space: nowrap;}
+.nwr,.nowrap {white-space: nowrap;}
+.wr,.wrap {word-wrap: break-word; word-break: break-all;}
 
 .left { text-align: left; }
 .right { text-align: right; }

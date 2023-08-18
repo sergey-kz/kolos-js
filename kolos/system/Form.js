@@ -27,8 +27,6 @@ kolos.Form = function (tagId) {
     this._init();
 
 
-
-
     this.getAll = function() {
         var data = {};
         for (var name in this._elements) {
@@ -114,3 +112,13 @@ kolos.Form = function (tagId) {
     }
 
 };
+
+
+// static method
+/**
+ * @param tagId
+ * @return {kolos.Form}
+ */
+kolos.Form.init = function (tagId) {
+    return new kolos.Form(tagId);
+}

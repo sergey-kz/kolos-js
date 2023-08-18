@@ -1,0 +1,18 @@
+<div>
+    <style>
+        .upload-hover {
+            background: #e3efff;
+        }
+    </style>
+
+    <div id="area" class="center" style="padding: 1px; border: 1px dashed #8998a7; min-height: 80px;">
+        <div id="caption" style="margin: 10px;">Перетащите файл в данную область</div>
+        <div id="items" class="m-norm"></div>
+        <div id="controls" class="m-norm">
+            <input class="button" id="btnSelectFile" type="file" multiple style="display: none;">
+            <div component="kolos.component.Button" onclick="kolos.component.Upload.selectFile();">Выбрать файл...</div>
+            <div component="kolos.component.Button" onclick="kolos.component.Upload.uploadAll();" name="btnSend" class="active" style="display: none;">Отправить</div>
+        </div>
+    </div>
+</div>
+

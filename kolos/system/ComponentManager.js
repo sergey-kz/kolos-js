@@ -1,6 +1,6 @@
 // внутренний класс
 kolos.ComponentContext = function() {
-    /** родительский компонент */
+    /** @type {kolos.ComponentManager.Component} родительский компонент */
     this.parent = undefined;
     this.baseElement = undefined;
     this.fullClassName = undefined;
@@ -67,6 +67,9 @@ kolos.ComponentManager = function (rootPath) {
     }
 
     this.destroyComponent = function (comp) {
+        if (comp === undefined) {
+            return;
+        }
         // сначала удаляем вложенные компоненты
         if (comp.component !== undefined) {
             for (let i in comp.component) {
@@ -154,6 +157,8 @@ kolos.ComponentManager = function (rootPath) {
 
     /**
      * Построить контекст для каждого элемента в дереве
+     * @param {[kolos.ComponentManager.Node]} nodes
+     * @private
      */
     this.__buildContextInTree = function (nodes) {
         for (let i in nodes) {
@@ -168,17 +173,19 @@ kolos.ComponentManager = function (rootPath) {
         // формируем url
         let url;
         let subNameSpace = context.namespace.replace('kolos.', '');
-        let coreComponents = [
+        let subPath = subNameSpace.replaceAll('.', '/');
+
+        let corePaths = [
             'component'
         ];
         // компоненты ядра грузим из каталога kolos
-        if (coreComponents.includes(subNameSpace)) {
+        if (corePaths.includes(subPath)) {
             // формируем адрес загрузки
             url = Self.rootPath
-                + '/kolos/' + subNameSpace;
+                + '/kolos/' + subPath;
         } else {
             url = Self.rootPath
-                + '/' + subNameSpace;
+                + '/' + subPath;
         }
         return url;
     }
@@ -193,12 +200,27 @@ kolos.ComponentManager = function (rootPath) {
     }
 
     /**
+     * Инициализация пространства имён
+     * @param {kolos.ComponentContext} context
+     */
+    this.__initNamespace = function (context) {
+        if (context.namespace === undefined) {
+            kolos.Utils.error('Failed get name space for: ' + kolos.Utils.varDump(context))
+            return;
+        }
+        kolos.Utils.initNamespace(context.namespace);
+    }
+
+    /**
      * Предварительная загрузка скриптов компонентов в дереве
      */
     this.__preloadComponentsInTree = function (nodes) {
         for (let i in nodes) {
             let node = nodes[i];
             let url = this.__buildUrl(node.context);
+
+            // инициалируем пространство имён
+            this.__initNamespace(node.context);
 
             // просто загружаем скрипт
             kolos.Utils.loadScriptAndExec(url, undefined);
@@ -679,6 +701,7 @@ kolos.ComponentManager = function (rootPath) {
             let allNodesInit = true;
 
             for (let i in queueNodes) {
+                /** @type {kolos.ComponentManager.Node} */
                 let node = queueNodes[i];
 
                 let context = node.context;
@@ -832,8 +855,27 @@ kolos.ComponentManager.replaceCallActions = function (template, component) {
     // в шаблоне заменяем имя класса на вызов глобального объекта компонента
     // (таким образов все вызовы будут принадлежать к своему экземпляру)
     return template.replaceAll(
-        component.context.fullClassName,
-        'kolos.Global.get(' + component.context.globalId + ')'
+        component.context.fullClassName + '.',
+        'kolos.Global.get(' + component.context.globalId + ').'
     );
 }
 
+
+// просто для объявления типа для автоподсказок
+kolos.ComponentManager.Node = function () {
+    this.element = {};
+    this.child = [];
+    /** @type {kolos.ComponentContext} */
+    this.context = {};
+    this.component = {};
+}
+
+// просто для объявления типа для автоподсказок
+kolos.ComponentManager.Component = function () {
+    /** @type {kolos.ComponentContext} */
+    this.context = {};
+    this.element = {};
+    this.component = {}
+    this.param = {};
+    this.attr = {};
+}

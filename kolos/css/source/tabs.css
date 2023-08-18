@@ -19,6 +19,7 @@
     border-top-right-radius: var(--radius-norm);
     /*padding: var(--p-norm) var(--p-big) var(--p-norm) var(--p-big);*/
     padding: var(--p-norm);
+    margin-top: 1px;
 }
 .tab-item:hover {
     background: #0a4370;

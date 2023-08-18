@@ -1,4 +1,3 @@
-if (kolos.example === undefined) kolos.example = {};
 kolos.example.Main = function() {
     // стандартные поля -->>
     let Self = this;
@@ -15,8 +14,24 @@ kolos.example.Main = function() {
     this.attr = {};
     //--
 
-    this.index = function() {
-        $(this.element.content).html('');
+    this.onPage = function() {
+        let page = kolos.Utils.val(this.param, 'page');
+
+        if (page === undefined) {
+            $(this.element.content).html(' ');
+            return;
+        }
+
+        let className = kolos.Utils.firstUp(page);
+
+        kolos.app.componentManager.initComponentTo(
+            '<div component="kolos.example.' + className + '"></div>',
+            Self.element.content,
+            Self,
+            () => {
+                //
+            }
+        );
     }
 
     this.builder = function() {

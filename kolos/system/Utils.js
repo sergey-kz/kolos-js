@@ -20,7 +20,7 @@ kolos.Utils = {
     __delayRequest: false,
     __verRand: false,
     __ver: '',
-    __verCore: '1.1',
+    __verCore: '1.2',
     __loadJs: {},
     __loadCss: {},
 
@@ -368,15 +368,55 @@ kolos.Utils = {
         return Math.floor(Math.random() * (max - min) + min);
     },
 
-    merge: function (obj1, obj2) {
+    merge: function (objBase, objPriority) {
         let result = {};
-        for (let key in obj1) {
-            result[key] = obj1[key];
+        for (let key in objBase) {
+            result[key] = objBase[key];
         }
-        for (let key in obj2) {
-            result[key] = obj2[key];
+        for (let key in objPriority) {
+            result[key] = objPriority[key];
         }
         return result;
+    },
+
+    getLength: function (obj) {
+        if (obj == null) {
+            return 0;
+        }
+        if (obj instanceof Array) {
+            return obj.length;
+        } else {
+            let count = 0;
+            for (let i in obj) {
+                count++;
+            }
+            return count;
+        }
+    },
+
+    /**
+     * Преобразует строковое значение во вложенные объекты
+     * 'name1.name2.name3' -> window['name1']['name2']['name3'] = {}
+     * @param strNamespace
+     */
+    initNamespace: function (strNamespace) {
+        let spaces = strNamespace.split('.');
+        if (spaces.length === 0) {
+            return undefined;
+        }
+        // задаём корневое пространство
+        let parentSpace = window;
+        // начинаем проверку со следующего пространства
+        for (let i = 0; i < spaces.length; i++) {
+            let space = spaces[i];
+            if (parentSpace[space] === undefined) {
+                // создаём пространство имён
+                parentSpace[space] = {};
+            }
+            // запоминаем родительское пространство имён
+            parentSpace = parentSpace[space];
+        }
+        return parentSpace;
     }
 
 };

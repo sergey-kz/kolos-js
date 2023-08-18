@@ -9,6 +9,14 @@ kolos.app = {
     __currentPage: undefined,
     __currentComponent: undefined,
 
+    __buildParamStr: function (params) {
+        let arr = [];
+        for (let key in params) {
+            arr.push(key + ': ' + params[key] + ';');
+        }
+        return arr.join(' ');
+    },
+
     /**
      * @param {kolos.Route} route
      * @returns {void|*}
@@ -28,7 +36,7 @@ kolos.app = {
         ) {
             kolos.Utils.debug('Init page: ' + fullClassName);
 
-            let elements = $(`<div component="` + fullClassName + `" ></div>`);
+            let elements = $(`<div component="` + fullClassName + `" param="` + this.__buildParamStr(route.params) + `"></div>`);
 
             $('body').html(elements);
 
@@ -43,9 +51,8 @@ kolos.app = {
                 kolos.app.__currentPage = component.context.fullClassName;
                 kolos.app.__currentComponent = component;
 
-                // по умолчанию всегда берём метод index
                 if (route.method === undefined || route.method === '') {
-                    route.method = 'index';
+                    route.method = 'onPage';
                 }
 
                 if (component[route.method] === undefined) {
@@ -54,7 +61,6 @@ kolos.app = {
                 }
 
                 component[route.method](route.args);
-
             });
 
         } else {
@@ -68,13 +74,16 @@ kolos.app = {
 
             // по умолчанию всегда берём метод index
             if (route.method === undefined || route.method === '') {
-                route.method = 'index';
+                route.method = 'onPage';
             }
 
             if (component[route.method] === undefined) {
                 kolos.Utils.error('Not found method ' + component.context.fullClassName + '.' + route.method + '()');
                 return;
             }
+
+            // закидываем параметры в компонент
+            component.param = route.params;
 
             component[route.method](route.args);
         }
